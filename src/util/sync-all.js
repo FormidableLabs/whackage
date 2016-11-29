@@ -1,11 +1,12 @@
 const path = require('path');
 const rsync = require('rsyncwrapper');
 
-module.exports = function syncAll(rootPath, source, name) {
+// eslint-disable-next-line max-params
+module.exports = function syncAll(rootPath, source, name, exclude) {
   const options = {
     src: `${source}/`,
     dest: path.join(rootPath, 'node_modules', name),
-    exclude: ['node_modules/*'],
+    exclude,
     recursive: true
   };
 

@@ -61,7 +61,7 @@ module.exports = function start() {
   // initial sync
   for (const key in packageLookup) {
     if (packageLookup.hasOwnProperty(key)) {
-      syncAll(ROOT_PATH, key, packageLookup[key]);
+      syncAll(ROOT_PATH, key, packageLookup[key], exclude);
     }
   }
 };

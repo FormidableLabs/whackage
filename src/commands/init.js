@@ -3,7 +3,7 @@ const config = require('../util/config');
 
 const defaultConfig = {
   include: '/**/*.js',
-  exclude: '/node_modules/*',
+  exclude: ['/node_modules/*', '.babelrc'],
   dependencies: {}
 };
 
