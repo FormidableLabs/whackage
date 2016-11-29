@@ -93,6 +93,10 @@ It will also specify a [CLI config](https://github.com/facebook/react-native/blo
 which adds the `node_modules` within linked source directories to the Haste blacklist to avoid `@providesModules`
 naming collisions.
 
+### Why the name?
+
+It's wacky, it's hacky, and it rhymes with package. Also it whacks your `node_modules` irreplaceably.
+
 ### Please note
 
 This project is in a pre-release state. The API may be considered relatively stable, but changes may still occur.
