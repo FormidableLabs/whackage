@@ -1,16 +1,27 @@
 {
   "name": "whackage",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Multi-repo development tooling for React Native",
+  "keywords": [
+    "todo"
+  ],
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "eslint index.js src"
   },
   "bin": {
     "whack": "./index.js"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FormidableLabs/whackage.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FormidableLabs/whackage/issues"
+  },
+  "homepage": "https://github.com/FormidableLabs/whackage#readme",
+  "author": "Jani Eväkallio",
+  "license": "MIT",
   "dependencies": {
     "chokidar": "^1.6.1",
     "fs-extra": "^1.0.0",

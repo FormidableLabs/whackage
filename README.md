@@ -21,25 +21,25 @@
 
 React Native packager, the development server that bundles your app's JavaScript sources, has a few rough
 edges when it comes to developing apps and libraries that span across multiple repositories. It doesn't
-[handle symlinks](https://productpains.com/post/react-native/symlink-support-for-packager) reliably, and the 
+[handle symlinks](https://productpains.com/post/react-native/symlink-support-for-packager) reliably, and the
 [Haste module system](https://github.com/facebookarchive/node-haste/tree/master) gets easily confused by
 `@providesModule` declarations in subdependencies.
 
-`whackage` synchronizes changes in your local workspace to your project's `node_modules` without using symlinks, and automatically generates a packager blacklist for linked modules to avoid Haste naming collisions. 
+`whackage` synchronizes changes in your local workspace to your project's `node_modules` without using symlinks, and automatically generates a packager blacklist for linked modules to avoid Haste naming collisions.
 
 We wrote `whackage` to scratch our own itch when working on [Victory Native](https://github.com/formidablelabs/victory-native). It's a blunt instrument, but it works
 well. Hope you find it useful!
 
 ### How-to
 
-#### Install 
+#### Install
 
-Install `whackage` globally:
+Install `whackage` globally (requires **node >=6** and OSX/Linux, Windows currently not supported):
 ```sh
 npm i -g whackage
 ```
 
-You'll now have access to the `whack` command on your command line. To get started, generate an empty 
+You'll now have access to the `whack` command on your command line. To get started, generate an empty
 `whackage.json` in your project's root directory:
 ```sh
 whack init
@@ -53,7 +53,7 @@ whack link ../victory-core-native
 whack link ../victory-chart-native
 ```
 
-`whackage` doesn't install and flatten transitive dependencies, so any linked libraries need to have been 
+`whackage` doesn't install and flatten transitive dependencies, so any linked libraries need to have been
 previously installed with `npm install` / `yarn`. Typically you would use `whackage` to make changes to libraries
 which are already defined in your `package.json` dependencies.
 
@@ -73,12 +73,12 @@ The `dependencies` map specifies which modules to synchronize, and paths to dire
 look for the sources.
 
 By default `whackage` watches changes to `.js` files, and ignores changes to the sources' `node_modules`.
-You can change the `include` and `exclude` glob patterns as needed. 
+You can change the `include` and `exclude` glob patterns as needed.
 
 #### Start packager
 
 Start the packager server with `whack run <command>`, where `command` is the npm script you normally use
-to start your development server. 
+to start your development server.
 
 If you usually start the server with `npm start`, the corresponding `whackage` command is:
 ```sh
@@ -87,7 +87,7 @@ whack run start
 
 When started, the `whackage` server will overwrite the specified `dependencies` in your `node_modules`
 with the sources you linked with `whack link`, and start a file watcher that synchronizes changes made
-in the source directories into your `node_modules` as they happen. 
+in the source directories into your `node_modules` as they happen.
 
 It will also specify a [CLI config](https://github.com/facebook/react-native/blob/master/packager/rn-cli.config.js)
 which adds the `node_modules` within linked source directories to the Haste blacklist to avoid `@providesModules`
