@@ -17,18 +17,17 @@
 
 ### What is this?
 
+**`whackage` provides a hot-reload-friendly workflow for working across multiple React Native packages**
+
 React Native packager, the development server that bundles your app's JavaScript sources, has a few rough
 edges when it comes to developing apps and libraries that span across multiple repositories. It doesn't
 [handle symlinks](https://productpains.com/post/react-native/symlink-support-for-packager) reliably, and the 
 [Haste module system](https://github.com/facebookarchive/node-haste/tree/master) gets easily confused by
 `@providesModule` declarations in subdependencies.
 
-`whackage` provides a hot-reload-friendly workflow for working across multiple packages at once 
-without using symlinks, and automatically generates a packager blacklist for linked modules to avoid Haste 
-naming collisions.
+`whackage` synchronizes changes in your local workspace to your project's `node_modules` without using symlinks, and automatically generates a packager blacklist for linked modules to avoid Haste naming collisions. 
 
-We wrote `whackage` to scratch our own itch when working on 
-[Victory Native](https://github.com/formidablelabs/victory-native). It's a blunt instrument, but it works
+We wrote `whackage` to scratch our own itch when working on [Victory Native](https://github.com/formidablelabs/victory-native). It's a blunt instrument, but it works
 well. Hope you find it useful!
 
 ### How-to
