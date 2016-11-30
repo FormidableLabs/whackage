@@ -7,9 +7,10 @@ module.exports = function run({ npmScript }) {
   const cliConfigPath = path.resolve(__dirname, '../packager/rn-cli.config.js');
 
   // spawn a packager process
-  const packager = childProcess.spawn('npm', [npmScript, '--', '--config', cliConfigPath]);
-  packager.stdout.pipe(process.stdout);
-  packager.stderr.pipe(process.stderr);
+  const packager = childProcess.spawn('npm', [npmScript, '--', '--config', cliConfigPath], {
+    stdio: 'inherit'
+  });
+
   packager.on('close', (code) => {
     process.exit(code);
   });
