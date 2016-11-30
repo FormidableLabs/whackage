@@ -1,14 +1,15 @@
 const path = require('path');
 const fs = require('fs-extra');
+const log = require('./log');
 
 // eslint-disable-next-line max-params
 module.exports = function syncFile(event, filename, source, dest) {
   const done = (error) => {
     if (error) {
-      console.error('error', error);
+      log.error(error);
       return;
     }
-    console.log('[whack]', event, path.join(dest, filename));
+    log.info(event, path.join(dest, filename));
   };
 
   if (event === 'unlink') {

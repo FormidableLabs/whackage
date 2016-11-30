@@ -1,5 +1,6 @@
 const assert = require('../util/assert');
 const config = require('../util/config');
+const log = require('../util/log');
 
 const defaultConfig = {
   include: '/**/*.js',
@@ -14,6 +15,6 @@ module.exports = function init({ force }) {
 
   config.write(defaultConfig);
 
-  console.log('Created whackage.json in the current directory.');
-  console.log('Run `whack link <relativePath>` to link your first module.');
+  log.info('Created whackage.json in the current directory.');
+  log.info('Run `whack link <relativePath>` to link your first module.');
 };

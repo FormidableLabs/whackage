@@ -1,5 +1,6 @@
 const assert = require('../util/assert');
 const config = require('../util/config');
+const log = require('../util/log');
 const path = require('path');
 
 module.exports = function link({ relativePath, name }) {
@@ -15,5 +16,5 @@ module.exports = function link({ relativePath, name }) {
     return whackage;
   });
 
-  console.log(`linked ${packageName} -> ${absolutePath}`);
+  log.info(`linked ${packageName} -> ${absolutePath}`);
 };

@@ -1,9 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 const config = require('./config');
+const log = require('./log');
 
 function exitWith(message) {
-  console.log(message);
+  log.error(message);
   process.exit(1);
 }
 
