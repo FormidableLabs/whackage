@@ -4,7 +4,7 @@ const log = require('../util/log');
 
 const defaultConfig = {
   include: '/**/*.js',
-  exclude: ['/node_modules/*', '.babelrc'],
+  exclude: ['/node_modules/*', '.babelrc', '.git'],
   dependencies: {}
 };
 
