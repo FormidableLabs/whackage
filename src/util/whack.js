@@ -1,6 +1,7 @@
 
 const path = require('path');
 const chokidar = require('chokidar');
+const assert = require('./assert');
 const syncAll = require('./sync-all');
 const syncFile = require('./sync-file');
 const config = require('./config');
@@ -23,6 +24,14 @@ module.exports = function start() {
       lookup[path.resolve(whackage.dependencies[key])] = key;
       return lookup;
     }, {});
+
+  // initial sync
+  for (const key in packageLookup) {
+    if (packageLookup.hasOwnProperty(key)) {
+      assert.isNotSymlinked(packageLookup[key]);
+      syncAll(ROOT_PATH, key, packageLookup[key], exclude);
+    }
+  }
 
   const dir = (p) => p.endsWith('/') ? p : `${p}/`;
   const watcher = chokidar.watch(directories, {
@@ -57,11 +66,4 @@ module.exports = function start() {
 
     syncFile(event, sourceFile, sourcePath, targetPath);
   });
-
-  // initial sync
-  for (const key in packageLookup) {
-    if (packageLookup.hasOwnProperty(key)) {
-      syncAll(ROOT_PATH, key, packageLookup[key], exclude);
-    }
-  }
 };

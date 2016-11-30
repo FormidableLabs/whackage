@@ -27,6 +27,7 @@
     "chokidar": "^1.6.1",
     "command-exists": "^1.0.2",
     "fs-extra": "^1.0.0",
+    "is-symlink": "^0.1.1",
     "rsyncwrapper": "^2.0.1",
     "yargs": "^6.4.0"
   },

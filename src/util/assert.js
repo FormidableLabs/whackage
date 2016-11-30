@@ -1,5 +1,7 @@
 const fs = require('fs');
 const path = require('path');
+const isSymlink = require('is-symlink');
+
 const config = require('./config');
 const log = require('./log');
 
@@ -41,10 +43,21 @@ function isOwnDependency(packageName) {
   }
 }
 
+function isNotSymlinked(packageName) {
+  const packagePath = path.resolve(process.cwd(), 'node_modules', packageName);
+  if (isSymlink.sync(packagePath)) {
+    exitWith(
+      `Package ${packageName} appears to be symlinked. ` +
+      'Overwriting symlinks is not currently supported. Unlink package and try again.'
+    );
+  }
+}
+
 module.exports = {
   exitWith,
   whackageJsonExists,
   whackageJsonDoesntExist,
   isValidModule,
-  isOwnDependency
+  isOwnDependency,
+  isNotSymlinked
 };

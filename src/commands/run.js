@@ -11,11 +11,10 @@ module.exports = function run({ npmScript }) {
 
   commandExists('rsync', (error, rsyncExists) => {
     if (!error && rsyncExists) {
+      whack();
       spawn('npm', [npmScript, '--', '--config', cliConfigPath], (code) => {
         process.exit(code);
       });
-
-      whack();
     } else {
       log.error(
         'Could\'t find `rsync`. Install it using your favorite package manager and try again'
