@@ -10,6 +10,8 @@ module.exports = function link({ relativePath, name }) {
   const absolutePath = path.resolve(relativePath);
   const packageName = name || require(path.join(absolutePath, 'package.json')).name;
 
+  assert.isOwnDependency(packageName);
+
   config.update((whackage) => {
     whackage.dependencies = whackage.dependencies || {};
     whackage.dependencies[packageName] = relativePath;

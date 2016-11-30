@@ -29,8 +29,21 @@ function isValidModule(directory) {
   }
 }
 
+function isOwnDependency(packageName) {
+  const packageJSON = require(path.resolve(process.cwd(), 'package.json'));
+  const dependencies = Object.assign({},
+    packageJSON.dependencies || {},
+    packageJSON.devDependencies || {}
+  );
+
+  if (!dependencies[packageName]) {
+    exitWith(`Package ${packageName} is not a registered dependency in ${packageJSON.name}`);
+  }
+}
+
 module.exports = {
   whackageJsonExists,
   whackageJsonDoesntExist,
-  isValidModule
+  isValidModule,
+  isOwnDependency
 };
