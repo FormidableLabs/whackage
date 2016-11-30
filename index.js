@@ -15,7 +15,7 @@ yargs
   )
   .command(
     'unlink <packageName>',
-    'unlink npm module',
+    'unlink npm module by name',
     {},
     require('./src/commands/unlink')
   )
@@ -27,7 +27,7 @@ yargs
   )
   .command(
     'run <npmScript>',
-    'run react native packager in whack mode',
+    'start whack server',
     {},
     require('./src/commands/run')
   )
