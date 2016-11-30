@@ -42,6 +42,7 @@ function isOwnDependency(packageName) {
 }
 
 module.exports = {
+  exitWith,
   whackageJsonExists,
   whackageJsonDoesntExist,
   isValidModule,

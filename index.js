@@ -20,6 +20,12 @@ yargs
     require('./src/commands/unlink')
   )
   .command(
+    'install [packageName]',
+    'update the depencies of linked modules',
+    {},
+    require('./src/commands/install')
+  )
+  .command(
     'run <npmScript>',
     'run react native packager in whack mode',
     {},
