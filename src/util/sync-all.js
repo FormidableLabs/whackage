@@ -1,6 +1,7 @@
 const path = require('path');
 const rsync = require('rsyncwrapper');
 const log = require('./log');
+
 // eslint-disable-next-line max-params
 module.exports = function syncAll(rootPath, source, name, exclude) {
   const options = {

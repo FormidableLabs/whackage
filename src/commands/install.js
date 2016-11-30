@@ -5,14 +5,22 @@ const spawn = require('../util/spawn');
 
 const SUCCESS = 0;
 
-module.exports = function link({ packageName = null }) {
+/*
+ * Install the npm dependendencies of a named package, or all
+ * linked packages, into the current project
+ */
+module.exports = function install({ packageName = null }) {
   assert.whackageJsonExists();
 
   const whackage = config.read();
+
+  // we expect the package to be part of the project's whackage.json
   if (packageName && !(packageName in whackage.dependencies)) {
     assert.exitWith(`Package ${packageName} not linked in whackage.json`);
   }
 
+  // if package name is provided, install dependencies of that package.
+  // otherwise install all linked packages
   const paths = packageName
     ? [whackage.dependencies[packageName]]
     : Object.keys(whackage.dependencies).map((key) => whackage.dependencies[key]);

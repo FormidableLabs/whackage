@@ -1,4 +1,3 @@
-
 const path = require('path');
 const chokidar = require('chokidar');
 const assert = require('./assert');
@@ -6,7 +5,12 @@ const syncAll = require('./sync-all');
 const syncFile = require('./sync-file');
 const config = require('./config');
 
-module.exports = function start() {
+/*
+ * Starts the whackage file watching service. Syncs the whole directories
+ * when the service is started, and as files are changed, copies individual
+ * file modifications one by one
+ */
+module.exports = function startServer() {
 
   const ROOT_PATH = process.cwd();
 

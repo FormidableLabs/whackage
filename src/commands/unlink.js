@@ -1,7 +1,11 @@
 const assert = require('../util/assert');
 const config = require('../util/config');
 const log = require('../util/log');
-module.exports = function link({ packageName }) {
+
+/*
+ * Remove a package from whackage.json by name
+ */
+module.exports = function unlink({ packageName }) {
   assert.whackageJsonExists();
   config.update((whackage) => {
     whackage.dependencies = whackage.dependencies || {};
