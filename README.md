@@ -132,9 +132,9 @@ When you're done making changes to your local packages, you can remove the `whac
 whack unlink victory-chart-native
 ```
 
-To reset your `node_modules`, but keep the `whackage.json` around for the next time you want to work with that package, run:
+To reset your your original dependencies, but keep the `whackage.json` around for the next time you want to work with that package, simply nuke your `node_modules`:
 ```
-whack reset
+rm -rf node_modules && npm i
 ```
 
 #### API
