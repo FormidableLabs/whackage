@@ -1,9 +1,13 @@
 {
   "name": "whackage",
-  "version": "0.2.0",
-  "description": "Multi-repo development tooling for React Native",
+  "version": "1.0.0",
+  "description": "Multi-repo development tool for React Native",
   "keywords": [
-    "todo"
+    "react-native",
+    "packager",
+    "providesModule",
+    "symlink",
+    "npm link"
   ],
   "main": "index.js",
   "scripts": {
@@ -20,7 +24,7 @@
     "url": "https://github.com/FormidableLabs/whackage/issues"
   },
   "homepage": "https://github.com/FormidableLabs/whackage#readme",
-  "author": "Jani Eväkallio",
+  "author": "Jani Eväkallio <jani.evakallio@formidable.com>",
   "license": "MIT",
   "dependencies": {
     "chalk": "^1.1.3",
