@@ -50,11 +50,17 @@ whack link ../path/to/other/package
 whack run start
 ```
 
-More detailed instructions of ech step below:
+More detailed instructions of each step below:
+
+#### Prerequisites
+* node `>=4`
+* npm `>=3`
+* OSX/Linux. Windows currently not supported, but PRs welcome.
+* `rsync` (most likely pre-installed on your system)
 
 #### Install
 
-Install `whackage` globally (requires **node >=4**, **npm >=3**, and OSX/Linux):
+Install `whackage` globally: 
 ```sh
 npm i -g whackage
 ```
