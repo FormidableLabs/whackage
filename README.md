@@ -54,7 +54,7 @@ More detailed instructions of ech step below:
 
 #### Install
 
-Install `whackage` globally (requires **node >=6**, **npm >=3**, and OSX/Linux):
+Install `whackage` globally (requires **node >=4**, **npm >=3**, and OSX/Linux):
 ```sh
 npm i -g whackage
 ```

@@ -9,6 +9,10 @@
     "symlink",
     "npm link"
   ],
+  "engines": {
+    "node": ">= 4",
+    "npm": ">= 3"
+  },
   "main": "index.js",
   "scripts": {
     "test": "eslint index.js src"
