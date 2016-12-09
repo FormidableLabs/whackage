@@ -147,7 +147,11 @@ Run `whack --help` for a list of all available commands and options.
 
 It's wacky, it's hacky, and it rhymes with package. Also it whacks your `node_modules`.
 
-### Please note
+#### Contributing 
+
+Found an issue or a missing feature? Congratulations! :tada: That is the prize you win as an early adopter! GitHub issues and pull requests are more than welcome.
+
+#### Please note
 
 This project is in a pre-release state. The API may be considered relatively stable, but changes may still occur.
 
