@@ -1,8 +1,10 @@
-const blacklist = require(`${process.cwd()}/node_modules/react-native/packager/blacklist`);
+const packagerPath = `${process.cwd()}/node_modules/react-native/packager`;
+const blacklist = require(`${packagerPath}/blacklist`);
+const providesModuleNodeModules = require(`${packagerPath}/defaults`).providesModuleNodeModules;
 const whackage = require('../util/config').read();
 const log = require('../util/log');
 module.exports = {
-  getBlacklistRE(platform) {
+  getBlacklistRE() {
     const modules = Object
       .keys(whackage.dependencies)
       .map((packageName) =>
@@ -10,9 +12,11 @@ module.exports = {
       );
 
     log.info(`blacklisted ${modules.length} dependencies`);
-    return blacklist(
-      platform,
-      modules
-    );
-  }
+    return blacklist(modules);
+  },
+
+  getProvidesModuleNodeModules() {
+    log.info(`providing ${Object.keys(whackage.dependencies).join(', ')} from node modules`);
+    return providesModuleNodeModules.concat(Object.keys(whackage.dependencies));
+  },
 };
