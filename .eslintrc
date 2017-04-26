@@ -6,9 +6,11 @@
     "node": true,
   },
   "rules": {
+    "arrow-parens": 0,
     "quotes": ["error", "single", { "avoidEscape": true }],
     "func-style": 0,
     "no-multiple-empty-lines": 0,
-    "no-console": 0
+    "no-console": 0,
+
   }
 }
