@@ -1,4 +1,4 @@
-const blacklist = require(`${process.cwd()}/node_modules/react-native/metro-bundler/build/blacklist`);
+const blacklist = require(`${process.cwd()}/node_modules/metro-bundler/build/blacklist`);
 const whackage = require('../util/config').read();
 const projectConfig = require('./project.config');
 
