@@ -6,8 +6,8 @@ const log = require('../util/log');
 module.exports = Object.assign({}, projectConfig, {
   getBlacklistRE(platform = []) {
     // blacklist dependencies' node modules to avoid duplicate module definitions
-    const modules = Object.keys(whackage.dependencies).map(
-      packageName => new RegExp(`node_modules/${packageName}/node_modules/.*`),
+    const modules = Object.keys(whackage.dependencies).map(packageName =>
+      new RegExp(`node_modules/${packageName}/node_modules/.*`)
     );
 
     const combined = platform.concat(modules);
