@@ -1,4 +1,7 @@
-const blacklist = require(`${process.cwd()}/node_modules/react-native/packager/blacklist`);
+const semver = require('semver');
+const rnVersion = require(`${process.cwd()}/node_modules/react-native/package.json`).version;
+const blacklistPackage = semver.lt(rnVersion, '0.46.0') ? 'react-native/packager' : 'metro-bundler/build';
+const blacklist = require(`${process.cwd()}/node_modules/${blacklistPackage}/blacklist`);
 const whackage = require('../util/config').read();
 const projectConfig = require('./project.config');
 
