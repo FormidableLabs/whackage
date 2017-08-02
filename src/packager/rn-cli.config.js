@@ -1,10 +1,30 @@
-const blacklist = require(`${process.cwd()}/node_modules/metro-bundler/build/blacklist`);
+
 const whackage = require('../util/config').read();
 const projectConfig = require('./project.config');
 
 const log = require('../util/log');
+
+function getBlacklist() {
+  let blacklist;
+
+  // RN >= 0.47
+  try {
+    blacklist = require(`${process.cwd()}/node_modules/metro-bundler/src/blacklist`);
+  } catch (e1) {
+    try {
+      blacklist = require(`${process.cwd()}/node_modules/metro-bundler/build/blacklist`);
+    } catch (e2) {
+      blacklist = require(`${process.cwd()}/node_modules/react-packager/blacklist`);
+    }
+  }
+
+  return blacklist;
+}
+
 module.exports = Object.assign({}, projectConfig, {
   getBlacklistRE(platform = []) {
+    const blacklist = getBlacklist();
+
     // blacklist dependencies' node modules to avoid duplicate module definitions
     const modules = Object.keys(whackage.dependencies).map(packageName =>
       new RegExp(`node_modules/${packageName}/node_modules/.*`)
@@ -20,5 +40,5 @@ module.exports = Object.assign({}, projectConfig, {
     } else {
       return blacklist(combined);
     }
-  },
+  }
 });
