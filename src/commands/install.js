@@ -9,7 +9,8 @@ const SUCCESS = 0;
  * Install the npm dependendencies of a named package, or all
  * linked packages, into the current project
  */
-module.exports = function install({ packageName = null }) {
+module.exports = function install(opts = {}) {
+  const packageName = opts.packageName || null;
   assert.whackageJsonExists();
 
   const whackage = config.read();
