@@ -9,8 +9,8 @@ const SUCCESS = 0;
  * Install the npm dependendencies of a named package, or all
  * linked packages, into the current project
  */
-module.exports = function install(opts = {}) {
-  const packageName = opts.packageName || null;
+module.exports = function install(opts) {
+  const packageName = opts && opts.packageName || null;
   assert.whackageJsonExists();
 
   const whackage = config.read();
@@ -26,9 +26,9 @@ module.exports = function install(opts = {}) {
     ? [whackage.dependencies[packageName]]
     : Object.keys(whackage.dependencies).map((key) => whackage.dependencies[key]);
 
-  log.info('Installing dependencies from', ...paths);
+  log.info(`Installing dependencies from ${paths.join(' ')}`);
 
-  spawn('npm', ['install', ...paths], (code) => {
+  spawn('npm', ['install', paths.join(' ')], (code) => {
     if (code === SUCCESS) {
       log.info('Successfully installed linked dependencies');
     } else {

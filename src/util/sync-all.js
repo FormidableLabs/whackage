@@ -17,6 +17,6 @@ module.exports = function syncAll(rootPath, source, name, exclude) {
       return;
     }
 
-    log.info('init', source, '->', path.join('node_modules', name));
+    log.info(`init ${source} -> ${path.join('node_modules', name)}`);
   });
 };

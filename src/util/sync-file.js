@@ -9,7 +9,7 @@ module.exports = function syncFile(event, filename, source, dest) {
       log.error(error);
       return;
     }
-    log.info(event, path.join(dest, filename));
+    log.info(`${event} ${path.join(dest, filename)}`);
   };
 
   if (event === 'unlink') {

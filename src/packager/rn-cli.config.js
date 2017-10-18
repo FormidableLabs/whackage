@@ -5,7 +5,7 @@ const projectConfig = require('./project.config');
 const log = require('../util/log');
 
 function getBlacklist() {
-  let blacklist;
+  var blacklist;
 
   // RN >= 0.47
   try {
@@ -14,7 +14,7 @@ function getBlacklist() {
     try {
       blacklist = require(`${process.cwd()}/node_modules/metro-bundler/build/blacklist`);
     } catch (e2) {
-      blacklist = require(`${process.cwd()}/node_modules/react-packager/blacklist`);
+      blacklist = require(`${process.cwd()}/node_modules/react-native/packager/blacklist`);
     }
   }
 
@@ -22,7 +22,7 @@ function getBlacklist() {
 }
 
 module.exports = Object.assign({}, projectConfig, {
-  getBlacklistRE(platform = []) {
+  getBlacklistRE(platform) {
     const blacklist = getBlacklist();
 
     // blacklist dependencies' node modules to avoid duplicate module definitions
@@ -30,7 +30,10 @@ module.exports = Object.assign({}, projectConfig, {
       new RegExp(`node_modules/${packageName}/node_modules/.*`)
     );
 
-    const combined = platform.concat(modules);
+    var combined = modules;
+    if (platform && platform.length) {
+      combined = platform.concat(modules)
+    }
 
     log.info(`blacklisted ${modules.length} dependencies`);
 

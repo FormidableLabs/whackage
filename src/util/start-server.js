@@ -46,8 +46,8 @@ module.exports = function startServer() {
   watcher.on('all', (event, changedPath) => {
     const sourcePath = path.resolve(path.dirname(changedPath));
     const sourceFile = path.basename(changedPath);
-    let packageRoot;
-    let packageName;
+    var packageRoot;
+    var packageName;
     for (const key in packageLookup) {
       if (packageLookup.hasOwnProperty(key) && dir(sourcePath).startsWith(dir(key))) {
         packageRoot = key;
