@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs-extra');
 const chokidar = require('chokidar');
 const assert = require('./assert');
 const syncAll = require('./sync-all');
@@ -32,7 +33,10 @@ module.exports = function startServer() {
   // initial sync
   for (const key in packageLookup) {
     if (packageLookup.hasOwnProperty(key)) {
-      assert.isNotSymlinked(packageLookup[key]);
+      if (assert.isSymlinked(packageLookup[key])) {
+        const packagePath = path.resolve(process.cwd(), 'node_modules', packageLookup[key]);
+        fs.removeSync(packageLookup[key]);
+      }
       syncAll(ROOT_PATH, key, packageLookup[key], exclude);
     }
   }
