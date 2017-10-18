@@ -3,22 +3,21 @@ const whackage = require('../util/config').read();
 const projectConfig = require('./project.config');
 
 const log = require('../util/log');
+const path = require('path');
+
+const rnVersion = require(path.join(process.cwd(), 'package.json')).dependencies['react-native']
 
 function getBlacklist() {
-  let blacklist;
-
   // RN >= 0.47
-  try {
-    blacklist = require(`${process.cwd()}/node_modules/metro-bundler/src/blacklist`);
-  } catch (e1) {
-    try {
-      blacklist = require(`${process.cwd()}/node_modules/metro-bundler/build/blacklist`);
-    } catch (e2) {
-      blacklist = require(`${process.cwd()}/node_modules/react-packager/blacklist`);
-    }
+  let blacklist = 'metro-bundler/src/blacklist';
+
+  if (rnVersion.indexOf('0.46') > -1) {
+    blacklist = 'metro-bundler/build/blacklist';
+  } else if (rnVersion.indexOf('0.45') > -1) {
+    blacklist = 'react-native/packager/blacklist';
   }
 
-  return blacklist;
+  return require(`${process.cwd()}/node_modules/${blacklist}`);
 }
 
 module.exports = Object.assign({}, projectConfig, {
