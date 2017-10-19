@@ -43,14 +43,9 @@ function isOwnDependency(packageName) {
   }
 }
 
-function isNotSymlinked(packageName) {
+function isSymlinked(packageName) {
   const packagePath = path.resolve(process.cwd(), 'node_modules', packageName);
-  if (isSymlink.sync(packagePath)) {
-    exitWith(
-      `Package ${packageName} appears to be symlinked. ` +
-      'Overwriting symlinks is not currently supported. Unlink package and try again.'
-    );
-  }
+  return isSymlink.sync(packagePath)
 }
 
 module.exports = {
@@ -59,5 +54,5 @@ module.exports = {
   whackageJsonDoesntExist,
   isValidModule,
   isOwnDependency,
-  isNotSymlinked
+  isSymlinked
 };
