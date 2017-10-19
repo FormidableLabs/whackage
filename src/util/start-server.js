@@ -35,7 +35,7 @@ module.exports = function startServer() {
     if (packageLookup.hasOwnProperty(key)) {
       if (assert.isSymlinked(packageLookup[key])) {
         const packagePath = path.resolve(process.cwd(), 'node_modules', packageLookup[key]);
-        fs.removeSync(packageLookup[key]);
+        fs.removeSync(packagePath);
       }
       syncAll(ROOT_PATH, key, packageLookup[key], exclude);
     }
