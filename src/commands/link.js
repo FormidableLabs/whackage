@@ -11,7 +11,9 @@ const SUCCESS = 0;
  * The package name is read from the linked package's package.json,
  * but can be overidden with --name parameter if necessary.
  */
-module.exports = function link({ relativePath, name }) {
+module.exports = function link(opts) {
+  const relativePath = opts.relativePath;
+  const name = opts.name;
   assert.whackageJsonExists();
   assert.isValidModule(relativePath);
 

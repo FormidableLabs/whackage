@@ -9,7 +9,7 @@ const rnVersion = require(path.join(process.cwd(), 'package.json')).dependencies
 
 function getBlacklist() {
   // RN >= 0.47
-  let blacklist = 'metro-bundler/src/blacklist';
+  var blacklist = 'metro-bundler/src/blacklist';
 
   if (rnVersion.indexOf('0.46') > -1) {
     blacklist = 'metro-bundler/build/blacklist';
@@ -21,7 +21,7 @@ function getBlacklist() {
 }
 
 module.exports = Object.assign({}, projectConfig, {
-  getBlacklistRE(platform = []) {
+  getBlacklistRE(platform) {
     const blacklist = getBlacklist();
 
     // blacklist dependencies' node modules to avoid duplicate module definitions
@@ -29,7 +29,10 @@ module.exports = Object.assign({}, projectConfig, {
       new RegExp(`node_modules/${packageName}/node_modules/.*`)
     );
 
-    const combined = platform.concat(modules);
+    var combined = modules;
+    if (platform && platform.length) {
+      combined = platform.concat(modules)
+    }
 
     log.info(`blacklisted ${modules.length} dependencies`);
 

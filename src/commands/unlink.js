@@ -7,7 +7,8 @@ const spawn = require('../util/spawn');
 /*
  * Remove a package from whackage.json by name
  */
-module.exports = function unlink({ packageName }) {
+module.exports = function unlink(opts) {
+  const packageName = opts.packageName;
   assert.whackageJsonExists();
 
   fs.remove(path.resolve(process.cwd(), 'node_modules', packageName), (error) => {

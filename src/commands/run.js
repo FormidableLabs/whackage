@@ -8,7 +8,7 @@ const log = require('../util/log');
 /*
  * Starts the whackage file watcher service and the react native packager
  */
-module.exports = function run({ npmScript }) {
+module.exports = function run(opts) {
 
   // rn-cli.config.js is the react native packager configuration file used to
   // blacklist dependencies' node modules to avoid @providesModule naming collisions
@@ -17,7 +17,7 @@ module.exports = function run({ npmScript }) {
   commandExists('rsync', (error, rsyncExists) => {
     if (!error && rsyncExists) {
       startServer();
-      spawn('npm', ['run', npmScript, '--', '--config', cliConfigPath], (code) => {
+      spawn('npm', ['run', opts.npmScript, '--', '--config', cliConfigPath], (code) => {
         process.exit(code);
       });
 

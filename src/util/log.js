@@ -1,11 +1,11 @@
 const chalk = require('chalk');
 
-function info(...messages) {
-  console.log(chalk.cyan('[whackage]'), ...messages);
+function info(message) {
+  console.log(chalk.cyan('[whackage]'), message);
 }
 
-function error(...messages) {
-  console.log(chalk.red('[whackage]'), ...messages);
+function error(message) {
+  console.log(chalk.red('[whackage]'), message);
 }
 
 module.exports = {
