@@ -29,8 +29,8 @@ const defaultConfig = {
 /*
  * Create a new whackage.json in current directory
  */
-module.exports = function init({ force }) {
-  if (!force) {
+module.exports = function init(opts) {
+  if (!opts.force) {
     assert.whackageJsonDoesntExist();
   }
 
