@@ -15,8 +15,6 @@
 
 ***
 
-⚠️ **ATTN:** Whackage is currently [not NPM 5 compatible](https://github.com/FormidableLabs/whackage/issues/9#issuecomment-313401409)!
-
 ### What is this?
 
 **`whackage` provides a hot-reload-friendly workflow for developing across multiple React Native packages**
