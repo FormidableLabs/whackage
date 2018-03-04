@@ -17,7 +17,7 @@ module.exports = function run(opts) {
   commandExists('rsync', (error, rsyncExists) => {
     if (!error && rsyncExists) {
       startServer();
-      spawn('npm', ['run', opts.npmScript, '--', '--config', cliConfigPath], (code) => {
+      spawn('npm', ['run', opts.npmScript, '--', '--config', cliConfigPath].concat(opts.arguments || []), (code) => {
         process.exit(code);
       });
 

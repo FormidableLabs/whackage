@@ -26,7 +26,7 @@ yargs
     require('./src/commands/install')
   )
   .command(
-    'run <npmScript>',
+    'run <npmScript> [arguments...]',
     'start whack server',
     {},
     require('./src/commands/run')
