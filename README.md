@@ -126,7 +126,7 @@ When you `whack link` a package, whackage automatically installs and flattens tr
 whack install victory-chart-native
 ```
 
-Or sync all transitive depedencies or all linked packages:
+Or sync all transitive dependencies or all linked packages:
 ```sh
 whack install
 ```
