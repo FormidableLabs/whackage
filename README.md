@@ -1,6 +1,3 @@
-[![Maintenance Status][maintenance-image]](#maintenance-status)
-
-
 <h1 align="center">whackage</h1>
 
 <p align="center">
@@ -10,6 +7,9 @@
   <a href="https://badge.fury.io/js/whackage">
     <img src="https://badge.fury.io/js/whackage.svg" alt="npm version" height="18">
   </a>
+   <a href="https://github.com/FormidableLabs/urql#maintenance-status">
+    <img alt="Maintenance Status" src="https://img.shields.io/badge/maintenance-active-green.svg" />
+   </a>
 </p>
 
 <h4 align="center">
@@ -169,5 +169,3 @@ This project is in a pre-release state. The API may be considered relatively sta
 ## Maintenance Status
 
  **Archived:** This project is no longer maintained by Formidable. We are no longer responding to issues or pull requests unless they relate to security concerns. We encourage interested developers to fork this project and make it their own!
-
- [maintenance-image]: https://img.shields.io/badge/maintenance-archived-red.svg
