@@ -8,7 +8,7 @@
     <img src="https://badge.fury.io/js/whackage.svg" alt="npm version" height="18">
   </a>
    <a href="https://github.com/FormidableLabs/urql#maintenance-status">
-    <img alt="Maintenance Status" src="https://img.shields.io/badge/maintenance-active-green.svg" />
+    <img alt="Maintenance Status" src="https://img.shields.io/badge/maintenance-archived-red.svg" />
    </a>
 </p>
 
