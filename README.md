@@ -29,6 +29,10 @@ Whackage is an `npm link` replacement that works with React Native. It synchroni
 
 We wrote whackage to scratch our own itch when working on [Victory Native](https://github.com/formidablelabs/victory-native). It's a blunt instrument, but it works well. Hope you find it useful!
 
+#### Maintenance Status: Archived
+
+This project is no longer maintained by Formidable. We are no longer responding to issues or pull requests unless they relate to security concerns. We encourage interested developers to fork this project and make it their own!
+
 ### How-to
 
 #### Quick start
