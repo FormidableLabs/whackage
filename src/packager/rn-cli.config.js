@@ -7,18 +7,23 @@ const log = require('../util/log');
 function getBlacklist() {
   var blacklist;
 
-  // RN >= 0.52
+	// RN >= 0.57
   try {
-    blacklist = require(`${process.cwd()}/node_modules/metro/src/blacklist`);
+    blacklist = require(`${process.cwd()}/node_modules/metro-config/src/defaults/blacklist`);
   } catch (e1) {
-    // RN >= 0.47
+    // RN >= 0.52
     try {
-      blacklist = require(`${process.cwd()}/node_modules/metro-bundler/src/blacklist`);
+      blacklist = require(`${process.cwd()}/node_modules/metro/src/blacklist`);
     } catch (e2) {
+      // RN >= 0.47
       try {
-        blacklist = require(`${process.cwd()}/node_modules/metro-bundler/build/blacklist`);
+        blacklist = require(`${process.cwd()}/node_modules/metro-bundler/src/blacklist`);
       } catch (e3) {
-        blacklist = require(`${process.cwd()}/node_modules/react-native/packager/blacklist`);
+        try {
+          blacklist = require(`${process.cwd()}/node_modules/metro-bundler/build/blacklist`);
+        } catch (e4) {
+          blacklist = require(`${process.cwd()}/node_modules/react-native/packager/blacklist`);
+        }
       }
     }
   }
@@ -48,5 +53,6 @@ module.exports = Object.assign({}, projectConfig, {
     } else {
       return blacklist(combined);
     }
-  }
+  },
+  projectRoot: process.cwd()
 });
